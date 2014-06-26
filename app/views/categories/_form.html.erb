@@ -1,0 +1,12 @@
+<%= simple_form_for(@category) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :user %>
+    <%= f.input :name %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: 'button small radius' %>
+  </div>
+<% end %>

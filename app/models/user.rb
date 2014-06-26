@@ -6,6 +6,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable
 
+  has_many :categories, dependent: :nullify
+  has_many :posts, dependent: :destroy
+
   def confirm!
     super
     add_role :user

@@ -11,7 +11,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140626013516) do
+ActiveRecord::Schema.define(version: 20140626013851) do
+
+  create_table "categories", force: true do |t|
+    t.integer  "user_id"
+    t.string   "name",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "categories", ["user_id"], name: "index_categories_on_user_id"
+
+  create_table "comments", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "post_id"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["post_id"], name: "index_comments_on_post_id"
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+
+  create_table "posts", force: true do |t|
+    t.integer  "category_id"
+    t.integer  "user_id"
+    t.string   "title",                       null: false
+    t.text     "content",                     null: false
+    t.boolean  "published",   default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "posts", ["category_id"], name: "index_posts_on_category_id"
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id"
 
   create_table "roles", force: true do |t|
     t.string   "name"
