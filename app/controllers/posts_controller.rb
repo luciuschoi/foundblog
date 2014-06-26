@@ -1,12 +1,22 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [ :index, :show ]
+  before_action :set_category
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   authorize_actions_for Post, only: [ :new, :create ]
 
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    if @category
+      @posts = @category.posts.published_posts
+    else
+      if params[:category_id] == '0'
+        @posts = Post.uncategorized_posts
+      else
+        @posts = Post.published_posts
+      end
+    end
+    @category_name = params[:category_id] == '0' ? "Uncategorized" : (@category ? @category.name : "")
   end
 
   # GET /posts/1
@@ -71,9 +81,18 @@ class PostsController < ApplicationController
   end
 
   private
+
+    def set_category
+      @category = Category.find(params[:category_id]) if params[:category_id] && params[:category_id] != '0'
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_post
-      @post = Post.find(params[:id])
+      if @category
+        @post = @category.posts.find(params[:id])
+      else
+        @post = Post.find(params[:id])
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

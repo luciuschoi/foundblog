@@ -1,6 +1,8 @@
-<h1>Editing category</h1>
+<h2>Editing category</h2>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @category %> |
-<%= link_to 'Back', categories_path %>
+<hr>
+
+<%= link_to 'Show', @category, class: 'button small radius' %>
+<%= link_to 'Back', categories_path, class: 'button small radius' %>

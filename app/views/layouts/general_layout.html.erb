@@ -24,6 +24,19 @@
               <li><%= link_to truncate(post.title, length: 16), post_path(post) %></li>
             <% end %>
           </ul>
+          <p>Category : <small><%= link_to "Admin", categories_path if user_signed_in? && current_user.has_role?(:admin) %></small></p>
+          <ul>
+            <li>
+              <%= link_to 'Uncategoried', posts_path(category_id: 0) %>
+              <small><%= Post.uncategorized_posts.size %></small>
+            </li>
+          <% Category.all.each do | category | %>
+            <li>
+              <%= link_to category.name, category_posts_path(category) %>
+              <small><%= category.posts.published_posts.size %></small>
+            </li>
+          <% end %>
+          </ul>
           <hr>
           <center>
             <% if user_signed_in? %>

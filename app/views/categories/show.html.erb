@@ -1,8 +1,8 @@
-<p id="notice"><%= notice %></p>
+<h2>Preview of Category</h2>
 
 <p>
   <strong>User:</strong>
-  <%= @category.user %>
+  <%= @category.user.email %>
 </p>
 
 <p>
@@ -10,5 +10,7 @@
   <%= @category.name %>
 </p>
 
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+<hr>
+
+<%= link_to 'Edit', edit_category_path(@category), class: 'button small radius' %>
+<%= link_to 'Back', categories_path, class: 'button small radius' %>

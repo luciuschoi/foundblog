@@ -1,7 +1,7 @@
 <div class='post'>
   <div class='category'>
     <strong>Category:</strong>
-    <%= @post.category %>
+    <%= @post.category ? @post.category.name : "Uncategorized" %>
   </div>
   <div class='title'>
     <H3><%= @post.title %></H3>
