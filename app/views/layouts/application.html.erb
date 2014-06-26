@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= content_for?(:title) ? yield(:title) : "FoundBlog" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag "vendor/modernizr" %>
@@ -11,9 +11,52 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  <%= yield %>
+    <nav class="top-bar" data-topbar>
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="/"><strong>Found<i>Blog</i></strong></a></h1>
+        </li>
+         <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+      </ul>
+      <section class="top-bar-section">
+        <!-- Right Nav Section -->
+        <ul class="right">
+          <% if user_signed_in? %>
+          <li class="has-dropdown">
+            <a href="#"><%= current_user.email %></a>
+            <ul class="dropdown">
+              <li><%= link_to "My Profile", edit_user_registration_path %></li>
+              <li><%= link_to "Roles : " + user_roles(current_user), '#' %></li>
+              <li><%= link_to "Sign out", destroy_user_session_path, method: :delete, data: { confirm: "Are you sure?" } %></li>
+            </ul>
+          </li>
+        <% else %>
+            <li><%= link_to "Sign in", new_user_session_path %></li>
+            <li><%= link_to "Sign up", new_user_registration_path %></li>
+          <% end %>
+        </ul>
+
+        <!-- Left Nav Section -->
+        <ul class="left">
+          <li><a href="/">HOME</a></li>
+          <li><%= link_to "Archives", '#' %></li>
+          <li><%= link_to "Readme", '#' %></li>
+        </ul>
+      </section>
+    </nav>
+
+    <div id="blog-banner">
+      <%= image_tag 'blog_header.png', width: '100%' %>
+    </div>
+
+    <%= content_for?(:devise) ? yield(:devise) : yield(:general) %>
+
+    <div id='footer'>
+      <div class='row'>
+      <p>Copyright&reg; 2014, FoundBlog, ROR Lab., All rights reserved.</p>
+      </div>
+    </div>
 
   </body>
 </html>

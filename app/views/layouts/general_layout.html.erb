@@ -1,0 +1,39 @@
+<!-- Section for General layouts -->
+<% if @posts.nil? %>
+  <% @posts = Post.all %>
+<% end %>
+
+<%= content_for :general do %>
+  <div class='row'>
+    <div class='large-9 medium-9 columns'>
+      <div class='row'>
+        <div class='medium-12 columns'>
+          <%= render partial: "shared/flash_messages", flash: flash %>
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+    <div class='medium-3 columns' style="margin-top: 1em">
+      <div class='row'>
+        <div class='medium-12 columns'>
+          <p>Recent Posts :</p>
+          <ul>
+            <% @posts.each do | post | %>
+              <li><%= link_to truncate(post.title, length: 16), post_path(post) %></li>
+            <% end %>
+          </ul>
+          <hr>
+          <center>
+            <% if user_signed_in? %>
+              <%= link_to 'New Post', new_post_path, class: 'button small radius' %>
+            <% else %>
+              <%= link_to 'Sign in', new_user_session_path, class: 'button small radius' %>
+            <% end %>
+          </center>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%= render template: 'layouts/application' %>
