@@ -1,0 +1,21 @@
+<h2>Archives</h2>
+<table id='archives'>
+  <% archive_year_month = "" %>
+  <% @posts.each do | post | %>
+    <% post_month = post.created_at.strftime("%Y-%m") %>
+    <% if archive_year_month != post_month %>
+    <tr>
+      <td colspan='2' class='year_month'>
+        <%= icon('calendar') %>
+        <%= archive_year_month = post_month %>
+      </td>
+    </tr>
+    <% end %>
+    <tr>
+      <td class='day'><%=post.created_at.day%></td>
+      <td class='post'>
+        <%= link_to "#{truncate(post.title)} (#{post.comments.size}), #{post.user.email}".html_safe, posts_path(post) %>
+      </td>
+    </tr>
+  <% end %>
+</table>

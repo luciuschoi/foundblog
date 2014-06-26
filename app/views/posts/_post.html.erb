@@ -18,9 +18,11 @@
       <%= simple_format truncate(post.content, length: 150) %>
     <% end %>
   </div>
+  <% if post.category %>
   <div class='category'>
     <%= icon('folder') + ' ' + post.category.name %>
   </div>
+  <% end %>
   <% if post.comments.count > 0 %>
     <div class='comments'>
       <%= icon('comment') %> <%= post.comments.count %>

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'welcome/readme'
+
   root 'posts#index'
 
   devise_for :users
@@ -10,6 +12,7 @@ Rails.application.routes.draw do
 
   resources :posts do
     get 'list_my', on: :collection
+    get 'archive', on: :collection
     resources :comments
   end
 

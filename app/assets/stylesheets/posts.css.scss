@@ -98,3 +98,30 @@ a.close {
   margin-top: .3em;
 }
 .actions { margin-top:1em; }
+
+table#archives {
+  color:#d9d9d9;
+  margin-bottom:1em;
+  width:100%;
+  border:0;
+  td {
+    background-color: white;
+  }
+  td.year_month {
+    font-size:1.5em;
+    color:#c8c8c8;
+    font-weight:bold;
+    font-style:italic;
+    padding-top:1em;
+    padding-left:0;
+  }
+  td.day {
+    text-align:center;
+    border:1px solid #eaeaea;
+    padding:5px;
+    background-color: #d5ebef;
+  }
+  td.post {
+    background-color: #f7f7f7;
+  }
+}

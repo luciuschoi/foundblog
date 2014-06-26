@@ -24,6 +24,10 @@ class PostsController < ApplicationController
     end
   end
 
+  def archive
+    @posts = Post.published_posts
+  end
+
   # GET /posts/1
   # GET /posts/1.json
   def show
