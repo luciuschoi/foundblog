@@ -21,6 +21,11 @@
   <div class='category'>
     <%= icon('folder') + ' ' + post.category.name %>
   </div>
+  <% if post.comments.count > 0 %>
+    <div class='comments'>
+      <%= icon('comment') %> <%= post.comments.count %>
+    </div>
+  <% end %>
   <div class='tags'>
     <%= icon_tags(post.tag_list) %>
   </div>

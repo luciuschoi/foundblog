@@ -1,0 +1,6 @@
+<%= simple_form_for [comment.post, comment], remote: true do | f | %>
+  <%= f.input :body, placeholder: 'Add a comment', label: false, input_html: { class: "form-control", rows: 5 } %>
+  <div style='text-align:right;'>
+  <%= f.button :submit, class: 'button tiny radius' %>
+  </div>
+<% end %>

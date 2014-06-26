@@ -1,0 +1,11 @@
+<% if comment.body.present? %>
+<li id="comment_<%=comment.id%>" class="comment">
+  <%= simple_format comment.body %>
+  <div style='text-align:right;margin-top:0;border-top:1px solid #eaeaea;'>
+    <small>- <%= comment.user.email %>, <%= time_ago_in_words(comment.created_at)%> ago</small>
+    <% if user_signed_in? && current_user.can_delete?(comment) %>
+      <%= link_to icon('trash'), [comment.post, comment], method: :delete, remote: true, data: { confirm: 'Are you sure?'} %>
+    <% end %>
+  </div>
+</li>
+<% end %>

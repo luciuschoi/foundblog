@@ -1,0 +1,12 @@
+<% comment = post.comments.new %>
+<div id="comments_<%=post.id%>" class='post_comments'>
+  <h4>Comments <small>( <%= post.comments.count %> )</small></h4>
+  <div id="list_of_comments_<%=post.id%>" class='list_of_comments'>
+    <ul class='comments'>
+      <%= render post.comments %>
+    </ul>
+  </div>
+  <div id="form_of_comments_<%=post.id%>" class="comment_form">
+    <%= render partial: "comments/form", locals: { comment: comment } %>
+  </div>
+</div>

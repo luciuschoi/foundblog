@@ -14,11 +14,17 @@
   <div class='tags'>
      <%= icon_tags(@post.tag_list) %>
   </div>
-  <div class='published'>
-    <%= published_icon @post.published %>
-  </div>
+  <% if user_signed_in? && current_user.can_update?(@post) %>
+    <div class='published'>
+      <%= published_icon @post.published %>
+    </div>
+  <% end %>
 </div>
 <hr>
 
-<%= link_to 'Edit', edit_post_path(@post), class: 'button small radius' %>
-<%= link_to 'Back', posts_path, class: 'button small radius' %>
+<div style='text-align:right;'>
+  <%= link_to 'Edit', edit_post_path(@post), class: 'button tiny radius' %>
+  <%= link_to 'Back', posts_path, class: 'button tiny radius' %>
+</div>
+
+<%= render partial: 'comments/comments', locals: { post: @post } %>
