@@ -1,5 +1,6 @@
 <!-- Section for General layouts -->
 <% @recent_posts = Post.recent %>
+<% @tags = Post.tag_counts_on(:tags) if @tags.blank? %>
 
 <%= content_for :general do %>
   <div class='row'>
@@ -37,6 +38,10 @@
             </li>
           <% end %>
           </ul>
+          <p>Tag Cloud :</p>
+          <% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
+            <%= link_to tag.name, posts_path(tag: tag.name), :class => css_class %>
+          <% end %>
           <hr>
           <center>
             <% if user_signed_in? %>

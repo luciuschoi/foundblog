@@ -2,6 +2,8 @@ class Post < ActiveRecord::Base
   resourcify
   include Authority::Abilities
 
+  acts_as_taggable
+
   belongs_to :category
   belongs_to :user
 

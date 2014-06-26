@@ -39,8 +39,9 @@ a.close {
 .post {
   margin-bottom:2em;
   .category {
-    border-bottom: 1px solid #eaeaea;
+    // border-bottom: 1px solid #eaeaea;
     padding-bottom:.5em;
+    font-size: .8em;
   }
   .title {
     text-align: center;
@@ -58,10 +59,17 @@ a.close {
     color:#999999;
   }
   .content {
+    margin-bottom: 1em;
+    padding-bottom: 1em;
+    border-bottom: 1px solid #eaeaea;
     p {
       line-height: 1.5em;
       margin-bottom:.5em;
     }
+  }
+  .published {
+    font-size: .8em;
+    margin-top: .5em;
   }
   .actions {  }
 }
@@ -77,3 +85,7 @@ a.close {
     border-radius: 5px;
   }
 }
+.css1 { border:1px solid #eaeaea;border-radius:5px;padding:0 3px;background-color: #eaeaea;line-height:1.4em;font-size: .6em; }
+.css2 { border:1px solid #eaeaea;border-radius:5px;padding:0 3px;background-color: #eaeaea;line-height:1.4em;font-size: .8em; }
+.css3 { border:1px solid #eaeaea;border-radius:5px;padding:0 3px;background-color: #eaeaea;line-height:1.4em;font-size: 1.0em; }
+.css4 { border:1px solid #eaeaea;border-radius:5px;padding:0 3px;background-color: #eaeaea;line-height:1.4em;font-size: 1.2em; }

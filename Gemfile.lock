@@ -27,6 +27,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    acts-as-taggable-on (3.2.6)
+      activerecord (>= 3, < 5)
     addressable (2.3.6)
     arel (5.0.1.20140414130214)
     authority (3.0.0)
@@ -144,6 +146,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts-as-taggable-on
   authority
   coffee-rails (~> 4.0.0)
   devise

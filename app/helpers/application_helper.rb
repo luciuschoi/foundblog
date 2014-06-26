@@ -38,4 +38,12 @@ module ApplicationHelper
     "<i class='fi-#{shape}'></i>".html_safe
   end
 
+  def icon_tags(tags_array)
+    label_tags = ""
+    tags_array.each do |tag|
+      label_tags += "<a href='/posts?tag=#{CGI::escape(tag)}'><span class='round label'>#{tag}</span></a> "
+    end
+    icon('pricetag-multiple') + ' ' + label_tags.html_safe unless tags_array.blank?
+  end
+
 end

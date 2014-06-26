@@ -1,3 +1,6 @@
+<% if params[:tag] %>
+  <%= icon('pricetag-multiple') %> <span class='alert round label'><strong><%= params[:tag] %></strong></span> <small>( <%= @posts.size %> )</small>
+<% end %>
 <% unless @category_name.blank? %>
 <div class='category'>
   <strong>Category:</strong>
