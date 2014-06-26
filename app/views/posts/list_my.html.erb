@@ -1,0 +1,33 @@
+<h2>My Posts</h2>
+
+<table width='100%'>
+<tr>
+  <th width='200'>Date</td>
+  <th>Title</td>
+  <th width='100'>Published</td>
+  <th width='100'>Actions</td>
+</tr>
+<% if @myposts.blank? %>
+  <tr>
+    <td colspan="4" style='height:15em;text-align:center;'>
+      <h2 style='color:#eaeaea !important;'>작성한 글이 없습니다.</h2>
+    </td>
+  </tr>
+<% end %>
+<% @myposts.each do | post| %>
+<tr>
+  <td><%= post.created_at %></td>
+  <td><%= post.title %></td>
+  <td><%= published_icon post.published %></td>
+  <td>
+    <span class='secondary radius label' title='show'><%= link_to icon('eye'), post %></span>
+    <span class='secondary radius label' title='edit'><%= link_to icon('pencil'), edit_post_path(post) %></span>
+    <span class='secondary radius label' title='destroy'><%= link_to icon('trash'), post, method: :delete, data: { confirm: "Are you sure?" } %></span>
+  </td>
+</tr>
+<% end %>
+</table>
+
+<hr>
+
+<%= link_to "Back", :back, class: 'button small radius' %>

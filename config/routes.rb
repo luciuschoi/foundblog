@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
-  resources :categories
 
-  resources :comments
-
-  resources :posts
+  root 'posts#index'
 
   devise_for :users
-  root 'home#index'
+
+  resources :categories
+  resources :posts do
+    get 'list_my', on: :collection
+    resources :comments
+  end
+
 end

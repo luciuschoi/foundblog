@@ -1,29 +1,23 @@
-<p id="notice"><%= notice %></p>
+<div class='post'>
+  <div class='category'>
+    <strong>Category:</strong>
+    <%= @post.category %>
+  </div>
+  <div class='title'>
+    <H3><%= @post.title %></H3>
+  </div>
+  <div class='author'>
+    created by <%= @post.user.email %>, <%= time_ago_in_words(@post.created_at) %> ago
+  </div>
+  <div class='content'>
+    <%= simple_format @post.content %>
+  </div>
+  <div class='published'>
+    <strong>Published:</strong>
+    <%= published_icon @post.published %>
+  </div>
+</div>
+<hr>
 
-<p>
-  <strong>Category:</strong>
-  <%= @post.category %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @post.user %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @post.content %>
-</p>
-
-<p>
-  <strong>Published:</strong>
-  <%= @post.published %>
-</p>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<%= link_to 'Edit', edit_post_path(@post), class: 'button small radius' %>
+<%= link_to 'Back', posts_path, class: 'button small radius' %>

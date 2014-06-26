@@ -35,21 +35,42 @@ a.close {
 }
 .post {
   margin-bottom:2em;
+  .category {
+    border-bottom: 1px solid #eaeaea;
+    padding-bottom:.5em;
+  }
   .title {
-
+    text-align: center;
+    margin:1em 0;
+    padding:1em 0;
+    background-color: #eaeaea;
+    border:1px solid #eaeaea;
+    border-radius: 5px;
   }
   .author {
     text-align: right;
-    margin-bottom: 2.5em;
+    margin-bottom: 1.5em;
+    font-size: .8em;
+    font-style: italic;
+    color:#999999;
   }
   .content {
     p {
       line-height: 1.5em;
       margin-bottom:.5em;
     }
-    // margin-bottom:2em;
   }
-  .actions {
+  .actions {  }
+}
 
+#posts {
+  margin-bottom: 4em;
+  h3#no_posts {
+    min-height:10em;
+    border:1px solid #eaeaea;
+    text-align: center;
+    line-height: 10em;
+    color: #eaeaea;
+    border-radius: 5px;
   }
 }

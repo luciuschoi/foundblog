@@ -1,7 +1,5 @@
 <!-- Section for General layouts -->
-<% if @posts.nil? %>
-  <% @posts = Post.all %>
-<% end %>
+<% @recent_posts = Post.recent %>
 
 <%= content_for :general do %>
   <div class='row'>
@@ -16,9 +14,13 @@
     <div class='medium-3 columns' style="margin-top: 1em">
       <div class='row'>
         <div class='medium-12 columns'>
+          <!-- 내가 작성한 글목록 -->
+          <% if user_signed_in? %>
+            <p><%= link_to "My Posts <small>( #{Post.myposts(current_user).size} )</small>".html_safe, list_my_posts_path %></p>
+          <% end %>
           <p>Recent Posts :</p>
           <ul>
-            <% @posts.each do | post | %>
+            <% @recent_posts.each do | post | %>
               <li><%= link_to truncate(post.title, length: 16), post_path(post) %></li>
             <% end %>
           </ul>

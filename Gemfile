@@ -7,6 +7,7 @@ gem 'devise'
 gem 'rolify'
 gem 'authority'
 gem "letter_opener", :group => :development
+gem 'foundation-icons-sass-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'

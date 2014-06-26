@@ -25,4 +25,17 @@ module ApplicationHelper
   def user_roles(user)
     user.roles.map(&:name).join(', ').titleize
   end
+
+  def published_icon(boolean)
+    if boolean
+      "<i class='fi-check'></i> 작성완료".html_safe
+    else
+      "<i class='fi-pencil'></i> 작성중...".html_safe
+    end
+  end
+
+  def icon(shape)
+    "<i class='fi-#{shape}'></i>".html_safe
+  end
+
 end

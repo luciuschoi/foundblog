@@ -1,0 +1,30 @@
+<div class='post'>
+  <div class='title'>
+    <h2>
+      <% if action_name == 'show' %>
+        <%= post.title %>
+      <% else %>
+        <%= truncate post.title %>
+      <% end %>
+    </h2>
+  </div>
+  <div class="author">
+    - created by <%= post.user.email %>, <%= time_ago_in_words(post.created_at) %> ago
+  </div>
+  <div class='content'>
+    <% if action_name == 'show' %>
+      <%= simple_format post.content %>
+    <% else %>
+      <%= simple_format truncate(post.content, length: 150) %>
+    <% end %>
+  </div>
+  <% if action_name == 'index' %>
+  <div class='actions' style='text-align:right;'>
+    <%= link_to 'read more...', post, class: 'button tiny radius' %>
+    <% if user_signed_in? %>
+      <%= link_to 'Edit', edit_post_path(post), class: 'button tiny radius' if post.updatable_by? current_user %>
+      <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?'}, class: 'button tiny radius'  if post.updatable_by? current_user %>
+    <% end %>
+  </div>
+  <% end %>
+</div>
