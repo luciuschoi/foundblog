@@ -31,6 +31,8 @@ GEM
       activerecord (>= 3, < 5)
     addressable (2.3.6)
     arel (5.0.1.20140414130214)
+    attr_searchable (0.0.2)
+      treetop
     authority (3.0.0)
       activesupport (>= 3.0.0)
       rake (>= 0.8.7)
@@ -147,6 +149,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-taggable-on
+  attr_searchable
   authority
   coffee-rails (~> 4.0.0)
   devise

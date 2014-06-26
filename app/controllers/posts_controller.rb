@@ -7,17 +7,21 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    if @category
-      @posts = @category.posts.published_posts
+    if params[:search]
+      @posts = Post.search(params[:search])
     else
-      if params[:category_id] == '0'
-        @posts = Post.uncategorized_posts
+      if @category
+        @posts = @category.posts.published_posts
       else
-        @posts = Post.published_posts
-        @posts = @posts.tagged_with(params[:tag]) if params[:tag]
+        if params[:category_id] == '0'
+          @posts = Post.uncategorized_posts
+        else
+          @posts = Post.published_posts
+          @posts = @posts.tagged_with(params[:tag]) if params[:tag]
+        end
       end
+      @category_name = params[:category_id] == '0' ? "Uncategorized" : (@category ? @category.name : "")
     end
-    @category_name = params[:category_id] == '0' ? "Uncategorized" : (@category ? @category.name : "")
   end
 
   # GET /posts/1

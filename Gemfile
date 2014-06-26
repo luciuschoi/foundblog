@@ -10,6 +10,7 @@ gem "letter_opener", :group => :development
 gem 'foundation-icons-sass-rails'
 gem 'jquery-turbolinks'
 gem 'acts-as-taggable-on'
+gem 'attr_searchable'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'

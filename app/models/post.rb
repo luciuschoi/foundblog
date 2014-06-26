@@ -2,6 +2,10 @@ class Post < ActiveRecord::Base
   resourcify
   include Authority::Abilities
 
+  include AttrSearchable
+  attr_searchable :title, :content
+  attr_searchable :comment => "comments.body"
+
   acts_as_taggable
 
   belongs_to :category
