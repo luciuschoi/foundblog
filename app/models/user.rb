@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
 
   def confirm!
     super
-    add_role :user
+    add_role :author
   end
 
 end
