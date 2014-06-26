@@ -1,3 +1,55 @@
-// Place all the styles related to the Posts controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// devise 모든 뷰 파일에 포함되는 _links.erb 파일의 <a>를 블럭으로 표시함.
+.devise-links {
+  a {
+    margin:.5em 0;
+    display:block;
+
+    // background-color: red;
+  }
+}
+
+// checkbox right margin -> 5px 로 지정함.
+input.boolean {
+  margin-right:5px;
+}
+
+legend h2 {
+  font-weight: bold;
+  font-style: italic;
+  border-right: 10px solid #eaeaea;
+  border-left: 10px solid #eaeaea;
+  padding:0 .5em;
+}
+
+.alert-box {
+  margin-top: .5em;
+}
+
+a.close {
+  color:white !important;
+}
+
+#posts {
+  // padding:0 1em;
+  margin-bottom: 4em;
+}
+.post {
+  margin-bottom:2em;
+  .title {
+
+  }
+  .author {
+    text-align: right;
+    margin-bottom: 2.5em;
+  }
+  .content {
+    p {
+      line-height: 1.5em;
+      margin-bottom:.5em;
+    }
+    // margin-bottom:2em;
+  }
+  .actions {
+
+  }
+}

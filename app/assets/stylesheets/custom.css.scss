@@ -1,0 +1,28 @@
+.button {
+  @include button;
+  background-color: white;
+  color: #999999;
+  border:1px solid #cccccc;
+}
+
+.input small {
+  display:block !important;
+  text-align: right;
+  margin:5px 2px;
+  color: #ff0000 !important;
+}
+
+.tiny {
+  margin-bottom:0;
+}
+
+#blog-banner {
+  margin-bottom: 3em;
+}
+
+#footer {
+  text-align: center;
+  height:3em;
+  padding: 1em 0;
+  border-top:1px solid #eaeaea;
+}
